@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <!-- min webläsare vill inte ha denna rad
+    <meta charset="UTF-8">-->
+    <title> Inlämning 4 /Uppgift 1 </title>
+    <script>
+    <!--
+        /*Namn och efternamn består av bokstäver, adress består av bokstäver och kanske även
+        siffror. Telnr består av siffror och kanske en mllanslag, men den kan vara om också.*/
+        function checkFields()
+        {
+            var namn = /[a-zA-Z]+$/;
+            var tel = /\d*\s*\d*$/;
+            var adress = /[a-zA-Z0-9]+$/;
+            var namnValue = document.frm.namn.value;
+            var efternamnValue = document.frm.efternamn.value;
+            var adressValue = document.frm.adress.value;
+            var telValue = document.frm.telnr.value;
+            if (namn.test(namnValue) != 1 || namn.test(efternamnValue) != 1) 
+            {    
+                alert('Fel inmatning namn, efternamn') 
+                return false;
+            }
+            if (adress.test(adressValue) != 1)
+            {
+                alert('Fel inmatning adress') 
+                return false;
+            }
+            if (tel.test(telValue) != 1)
+            {
+                alert('Fel inmatning telnr') 
+                return false;
+            }  
+            if (document.frm.anvandarnamn2.value == "")
+            {
+                alert('Användarnamn saknas') 
+                return false;
+            }
+            return true;    
+        }
+        
+        /*om man vill logga in, måste man ha fyllt i användarnamnet.*/
+        function checkAnvandarnamn() {
+            
+            if (document.frm.anvandarnamn.value == "")
+            {
+                alert('Användarnamn saknas') 
+                return false;
+            }
+            return true; 
+        }
+    -->
+    </script>
+    <noscript>
+        Din webläsare kan inte hantera script
+    </noscript>
+</head>
+<body>
+    <h2><font color="#00cc00"> Logga in med användarnamn </font></h2>
+    <form name="frm" method="POST" action="bestallning.php">
+        <table>
+            <tr>
+                <td>Användarnamn</td>
+                <td><input type="text" name="anvandarnamn"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="loggin" value="Logga in" onClick="return checkAnvandarnamn();"></td>
+            </tr>
+            <tr><td><h2><font color="#00cc00"> Ny användare </font></h2></td></tr>
+            <tr>
+                <td>Namn</td>
+                <td><input type="text" name="namn"></td>
+            </tr>
+            <tr>
+                <td>Efternamn</td>
+                <td><input type="text" name="efternamn"></td>
+            </tr>
+            <tr>
+                <td>Adress</td>
+                <td><input type="text" name="adress"></td>
+            </tr>
+            <tr>
+                <td>Telefonnummer</td>
+                <td><input type="text" name="telnr"></td>
+            </tr>
+            <tr>
+                <td>Användarnamn</td>
+                <td><input type="text" name="anvandarnamn2"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="register" value="Registrera" onClick="return checkFields();"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
